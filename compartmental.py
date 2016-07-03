@@ -52,7 +52,7 @@ def simulate(N, beta, gamma, sirs=False):
         # In this case there are no new infections and once everyone in the population recovers
         # the algorithm ends
         if infection_rate != 0:
-            new_infections = int(min(round(np.random.exponential(infection_rate)), Ns))
+            new_infections = int(min(round(np.random.poisson(infection_rate)), Ns))
             # print("new", new_infections, "Ns", Ns, "\n")
 
             # np.random.normal(mean, std, number of variables to draw)
@@ -111,8 +111,7 @@ run_SIR()
 
 
 def run_SIRS():
-    # starting_population = [50*(10**3), 250*(10**3), 50*(10**4), 1*(10**6), 2*(10**6)]
-    # betas = [0.25, 0.5, 1.5, 3]
+    # This takes longer to run, since in many cases the epidemic never ends
 
     starting_population = [50000, 250000]
     betas = [0.1, 0.25, 0.5, 2]
